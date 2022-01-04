@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-  public float runSpeed = 1f;
-  public float jumpSpeed = 2f;
-  public float runWithJump = 0.6f;
+  public float runSpeed = 8f;
+  public float jumpSpeed = 8f;
+  public float runWithJump = 2f;
   public float maxTimeJump = 0.4f;
   public float timeJump;
   public Animator animatior;
@@ -20,15 +20,18 @@ public class PlayerMove : MonoBehaviour
   }
 
   // Update is called once per frame
-  void Update()
+  void FixedUpdate()
   {
     float speed = runSpeed;
     if(CheckGround.isTouchGround){
       animatior.SetBool("Jump", false);
       timeJump = 0f;
-    }else{
+    }
+
+    if(rb2D.velocity.y > 0.1f || rb2D.velocity.y < -0.1f){
       speed = runWithJump;
     }
+
     if (Input.GetKey("w") && timeJump <= maxTimeJump)
     {
       timeJump += Time.deltaTime;
@@ -51,6 +54,7 @@ public class PlayerMove : MonoBehaviour
     else
     {
       animatior.SetBool("Run", false);
-    }
+      rb2D.velocity = new Vector2(0, rb2D.velocity.y);
+        }
   }
 }
