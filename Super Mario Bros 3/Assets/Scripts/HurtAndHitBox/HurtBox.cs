@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class HurtBox : MonoBehaviour
 {
-    public string tag = "Player";
+    public string tagToCompare = "Player";
     public UnityEvent customEvent;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class HurtBox : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag(tag))
+        if (collider.CompareTag(tagToCompare))
         {
             customEvent.Invoke();
         }

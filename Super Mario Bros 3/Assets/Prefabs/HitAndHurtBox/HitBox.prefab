@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb3a4cb429e09341ac5fe10eea58494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tag: Player
+  tagToCompare: Player
   customEvent:
     m_PersistentCalls:
       m_Calls:
